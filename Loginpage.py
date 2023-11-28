@@ -8,6 +8,8 @@ root.geometry('903x603')
 root.config(bg="#fff")
 root.resizable(False,False)
 
+
+
 def signin():
     username=user.get()
     password=code.get()
@@ -26,9 +28,13 @@ def signin():
         screen.geometry('903x603')
         screen.config(bg='white')
         
+       
         Label(screen,text='Hello!',bg='#fff',font=('Calibri(Body)',50,'bold')).pack(expand=True)
+
         
         screen.mainloop()
+        
+        
         
     else:
         messagebox.showerror('Invalid','Invalid username or password')
@@ -101,10 +107,8 @@ def signup_command():
     user.bind('<FocusOut>', on_leave)
 
     Frame(frame,width=250,height=2,bg='black').place(x=70,y=107)
-
-
-
-
+    
+    
     ################------------
 
     def on_enter(e):
@@ -131,7 +135,7 @@ def signup_command():
         if codeconfirm.get()=='':
             codeconfirm.insert(0,'Confirm Password')
             
-    codeconfirm = Entry(frame,width=25,fg='black',border=0,bg='white',font=('Microsoft Yahei UI Light',11))
+    codeconfirm = Entry(frame,width=25,fg='black',border=0,bg='white',show='*',font=('Microsoft Yahei UI Light',11))
     codeconfirm.place(x=70,y=220)
     codeconfirm.insert(0,'Confirm Password')
     codeconfirm.bind('<FocusIn>', on_enter)
@@ -191,7 +195,7 @@ def on_leave(e):
     if name=='':
         user.insert(0,'Password')
         
-code = Entry(frame,width=25,fg='black',border=0,bg='white',font=('Microsoft Yahei UI Light',11))
+code = Entry(frame,width=25,fg='black',border=0,bg='white',show='*',font=('Microsoft Yahei UI Light',11))
 code.place(x=70,y=150)
 code.insert(0,'Password')
 code.bind('<FocusIn>', on_enter)
@@ -201,11 +205,16 @@ Frame(frame,width=250,height=2,bg='black').place(x=70,y=177)
 
 #######################------------------------------------
 
-Button(frame,width=39,pady=7,text='Sign in', bg='#56a1f8',fg='white',border=0, command=signin).place(x=57,y=204)
+sign_in=Button(frame,width=39,pady=7,text='Sign in', bg='#56a1f8',fg='white',border=0, command=signin).place(x=57,y=204)
 label=Label(frame,text="Don't have an account?",fg='black',bg='white',font=('Microsoft Yahei UI Light',9))
 label.place(x=100,y=270)
 
+
+
+
 sign_up= Button(frame,width=6,text='Sign up',border=0,bg='white', cursor='hand2',fg='#57a1f8',command=signup_command)
 sign_up.place(x=235,y=270)
+
+
 
 root.mainloop()
